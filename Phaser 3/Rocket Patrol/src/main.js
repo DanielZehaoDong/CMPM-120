@@ -1,7 +1,13 @@
+// Zehao Dong
+//
+//
+//
+//
+
 let config = {
     type: Phaser.CANVAS,
-    width: 960,
-    height: 720,
+    width: 640,
+    height: 480,
     scene: [ Menu, Play ]
 }
 let game = new Phaser.Game(config);
