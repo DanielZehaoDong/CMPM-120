@@ -1,8 +1,6 @@
 // Zehao Dong
-//
-//
-//
-//
+// Mod name: Farm Defender
+
 
 let config = {
     type: Phaser.CANVAS,
