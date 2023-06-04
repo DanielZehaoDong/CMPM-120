@@ -32,6 +32,12 @@ class Play extends Phaser.Scene {
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        //set up mouse control
+        this.input.on('pointerdown', function (pointer){
+            if (pointer.leftButtonDown()){
+                this.p1Rocket.shootOnClick()
+            }
+        }, this);
         // animation config
         this.anims.create({
             key: 'explode',
@@ -54,6 +60,23 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        // display time
+        let timeConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'middle',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+        fixedWidth: 100
+        }
+        this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.updateTime, callbackScope: this, loop: true });
+        this.currTime = game.settings.gameTimer/1000;
+        this.timeLeft = this.add.text(game.config.width/2-borderUISize - borderPadding*2, borderUISize + borderPadding*2, this.currTime, timeConfig);
+        scoreConfig.fixedWidth = 0;
         // GAME OVER flag
         this.gameOver = false;
         // 60-second play clock
