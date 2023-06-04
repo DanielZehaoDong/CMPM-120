@@ -15,6 +15,8 @@ class Menu extends Phaser.Scene {
             align: 'right',
         fixedWidth: 0
         }
+        this.bgmMenu = this.sound.add("bgmMenu", { loop: true });
+        this.bgmMenu.play();
         this.add.sprite(0,0,"background").setOrigin(0,0);
         this.add.text(game.config.width/2,game.config.height/2, 'Endless Runner', menuConfig).setOrigin(0.5,0.5);
         menuConfig.fontSize=40;
@@ -35,6 +37,7 @@ class Menu extends Phaser.Scene {
                 }
                 textureManager.addImage('titlesnapshot', snapshotImage);
             });
+            this.bgmMenu.stop();
             this.scene.start('playScene'); 
         }
         if (Phaser.Input.Keyboard.JustDown(keyT)) {

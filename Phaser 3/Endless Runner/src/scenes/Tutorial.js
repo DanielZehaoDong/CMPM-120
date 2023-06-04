@@ -24,6 +24,7 @@ class Tutorial extends Phaser.Scene {
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+            this.bgmMenu.stop();
             this.scene.start('playScene');    
         }
     }
