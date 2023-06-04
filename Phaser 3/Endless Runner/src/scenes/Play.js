@@ -29,7 +29,6 @@ class Play extends Phaser.Scene {
         this.character = this.physics.add.sprite(game.config.width/2,game.config.height-50, 'character').setOrigin(0.5);
         this.character.setCollideWorldBounds(true);
         this.character.destroyed = false;
-        this.barrierList = [];
         this.totalScore=0;
         if (this.textures.exists('titlesnapshot')) {
             let titleSnapLeft = this.add.image(centerX, centerY, 'titlesnapshot').setOrigin(0.5);
@@ -51,7 +50,7 @@ class Play extends Phaser.Scene {
                 scale: { from: 1, to: 0 },
                 repeat: 0,
                 x: { from: centerX, to: game.config.width },
-                onComplete: this.onCompleteHandler.bind(this)
+                gameFinish: this.gameFinish.bind(this)
             });
         }
         this.obstruction1 = new Obstacles(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
