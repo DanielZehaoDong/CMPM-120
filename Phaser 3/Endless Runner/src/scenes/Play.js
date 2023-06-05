@@ -53,11 +53,11 @@ class Play extends Phaser.Scene {
                 gameFinish: this.gameFinish.bind(this)
             });
         }
-        this.obstruction1 = new Obstacles(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction2 = new Obstacles(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction3 = new Obstacles(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction4 = new Obstacles(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 15, false).setOrigin(0, 0);
-        this.obstruction5 = new Obstacles(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 15, false).setOrigin(0, 0);
+        this.obstruction1 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction2 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction3 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction4 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction5 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
         let gameOverConfig = {
             fontFamily: 'Cursive',
             fontSize: '24px',
