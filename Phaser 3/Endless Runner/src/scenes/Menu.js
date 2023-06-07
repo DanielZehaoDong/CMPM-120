@@ -19,7 +19,7 @@ class Menu extends Phaser.Scene {
         this.bgmMenu.play();
         this.add.sprite(0,0,"background").setOrigin(0,0);
         this.add.text(game.config.width/2,game.config.height/2, 'Endless Runner', menuConfig).setOrigin(0.5,0.5);
-        menuConfig.fontSize=40;
+        menuConfig.fontSize=80;
         this.add.text(game.config.width/2,game.config.height/2+10+15, 'By Zehao Dong', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height/2+10+15+35, 'Press T for Tutorials', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height/2+10+15+35+60, 'Press Space to Play', menuConfig).setOrigin(0.5,0.5);

@@ -30,7 +30,8 @@ class Play extends Phaser.Scene {
         this.character.setCollideWorldBounds(true);
         this.character.destroyed = false;
         this.totalScore=0;
-        if (this.textures.exists('titlesnapshot')) {
+
+        /*if (this.textures.exists('titlesnapshot')) {
             let titleSnapLeft = this.add.image(centerX, centerY, 'titlesnapshot').setOrigin(0.5);
             titleSnapLeft.setCrop(0,0,350,700);
             this.tweens.add({
@@ -53,11 +54,13 @@ class Play extends Phaser.Scene {
                 gameFinish: this.gameFinish.bind(this)
             });
         }
-        this.obstruction1 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction2 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction3 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction4 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
-        this.obstruction5 = new Obstruction(this, Math.floor(Math.random() * 700), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        */
+
+        this.obstruction1 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction2 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction3 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction4 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
+        this.obstruction5 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'obstruction', 0, 5, false).setOrigin(0, 0);
         let gameOverConfig = {
             fontFamily: 'Cursive',
             fontSize: '24px',
