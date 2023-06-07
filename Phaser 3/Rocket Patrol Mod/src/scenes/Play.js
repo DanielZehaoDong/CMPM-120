@@ -131,41 +131,6 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', this.scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }
-        // power ups
-        for (var i = 0; i < this.powerupListOne.length; i++) {
-            if(game.settings.mode == 'hard'){
-                this.powerupListOne[i].y+=3;
-            }else{
-                this.powerupListOne[i].y+=1;
-            }
-            if((this.powerupListOne[i].y>(game.config.height-borderPadding-borderUISize))){
-                this.powerupListOne[i].destroy();
-            }
-            if(this.checkCollision(this.p1Rocket, this.powerupListOne[i])){
-                this.powerupListOne[i].destroy();
-                if(this.p1Rocket.powerup==2){
-                    this.p1Rocket.setTexture('rocket');
-                }
-                this.p1Rocket.powerup=1;
-                this.p1Score += 5;
-                this.scoreLeft.text = this.p1Score;
-            }
-        }
-        for (var i = 0; i < this.powerupListTwo.length; i++) {
-            if(game.settings.mode == 'hard'){
-                this.powerupListTwo[i].y+=3;
-            }else{
-                this.powerupListTwo[i].y+=1;
-            }
-            if((this.powerupListTwo[i].y>(game.config.height-borderPadding-borderUISize))){
-                this.powerupListTwo[i].destroy();
-            }
-            if(this.checkCollision(this.p1Rocket, this.powerupListTwo[i])){
-                this.powerupListTwo[i].destroy();
-                this.p1Rocket.powerup=2;
-                this.p1Rocket.setTexture('bigshot');
-            }
-        }
     }
     checkCollision(rocket, ship) {
         // simple AABB checking
