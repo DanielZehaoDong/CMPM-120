@@ -79,6 +79,9 @@ class Play extends Phaser.Scene {
         scoreConfig.fixedWidth = 0;
         // GAME OVER flag
         this.gameOver = false;
+        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        // implement the 'FIRE' UI
+        this.fireText = this.add.text(game.config.width - 6*borderPadding-2*borderUISize, borderUISize + borderPadding*2, "", scoreConfig);
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
@@ -88,6 +91,12 @@ class Play extends Phaser.Scene {
         }, null, this);
     }
     update() {
+        if (this.p1Rocket.isFiring==true){
+            this.fireText.text="FIRE";
+        }
+        else {
+            this.fireText.text="";
+        }
         // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
@@ -116,6 +125,47 @@ class Play extends Phaser.Scene {
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
         }
+        // implement timing/scoring mechanism
+        if(this.currTime==0){
+            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', this.scoreConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', this.scoreConfig).setOrigin(0.5);
+            this.gameOver = true;
+        }
+        // power ups
+        for (var i = 0; i < this.powerupListOne.length; i++) {
+            if(game.settings.mode == 'hard'){
+                this.powerupListOne[i].y+=3;
+            }else{
+                this.powerupListOne[i].y+=1;
+            }
+            if((this.powerupListOne[i].y>(game.config.height-borderPadding-borderUISize))){
+                this.powerupListOne[i].destroy();
+            }
+            if(this.checkCollision(this.p1Rocket, this.powerupListOne[i])){
+                this.powerupListOne[i].destroy();
+                if(this.p1Rocket.powerup==2){
+                    this.p1Rocket.setTexture('rocket');
+                }
+                this.p1Rocket.powerup=1;
+                this.p1Score += 5;
+                this.scoreLeft.text = this.p1Score;
+            }
+        }
+        for (var i = 0; i < this.powerupListTwo.length; i++) {
+            if(game.settings.mode == 'hard'){
+                this.powerupListTwo[i].y+=3;
+            }else{
+                this.powerupListTwo[i].y+=1;
+            }
+            if((this.powerupListTwo[i].y>(game.config.height-borderPadding-borderUISize))){
+                this.powerupListTwo[i].destroy();
+            }
+            if(this.checkCollision(this.p1Rocket, this.powerupListTwo[i])){
+                this.powerupListTwo[i].destroy();
+                this.p1Rocket.powerup=2;
+                this.p1Rocket.setTexture('bigshot');
+            }
+        }
     }
     checkCollision(rocket, ship) {
         // simple AABB checking
@@ -142,6 +192,37 @@ class Play extends Phaser.Scene {
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');        
+        // explosion sound effects
+        switch (Math.floor(Math.random() * 5)){
+            case 0:
+                this.sound.play('sfx_explosion');
+                break;
+            case 1:
+                this.sound.play('sfx_explosion1');
+                break;
+            case 2:
+                this.sound.play('sfx_explosion2');
+                break;
+            case 3:
+                this.sound.play('sfx_explosion3');
+                break;
+            case 4:
+                this.sound.play('sfx_explosion4');
+                break;
+        }       
+    }
+    generatePowerUp(){
+        var chance=Math.floor(Math.random() * 20);
+        if(chance == 0){
+            this.powerupListOne.push(this.add.sprite(this.p1Rocket.x+32,this.p1Rocket.y+16,"powerup1"));
+        }else if(chance == 1){
+            this.powerupListTwo.push(this.add.sprite(this.p1Rocket.x+32,this.p1Rocket.y+16,"powerup2"));
+        }
+    }
+    updateTime (){
+        if(this.currTime>0&&(!this.gameOver)){
+            this.currTime -= 1; // One second
+            this.timeLeft.text = this.currTime;
+        }
     }
 }
