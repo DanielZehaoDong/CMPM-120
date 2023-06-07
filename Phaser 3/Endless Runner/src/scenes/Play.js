@@ -10,7 +10,7 @@ class Play extends Phaser.Scene {
         this.load.audio('bgmPlay', ['./assets/audio/bgmPlay.wav']);
         this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');
         this.load.audio('deathAudio', './assets/audio/deathAudio.wav');
-        this.load.audio('gameOver', './assets/gameOver.wav');
+        this.load.audio('gameOver', './assets/audio/gameOver.wav');
     }
     create() {
         this.bgmPlay = this.sound.add("bgmPlay", { loop: true });
@@ -110,7 +110,7 @@ class Play extends Phaser.Scene {
         }
         if(this.character.destroyed){
             this.sound.play('deathAudio')
-            this.character.img.play('death')
+            this.character.setTexture('death')
         }
         if (this.character.destroyed && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.bgmPlay.stop();
