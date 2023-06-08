@@ -18,7 +18,7 @@ class Tutorial extends Phaser.Scene {
         this.add.text(game.config.width/2+100,game.config.height/5+60+100, 'Use ← and → to move', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2+100,game.config.height/5+60+100+100, 'Keep alive!', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2+100,game.config.height/5+60+100+100+50, 'Good luck bro!', menuConfig).setOrigin(0.5,0.5);
-        menuConfig.fontSize=24;
+        menuConfig.fontSize=30;
         this.add.text(game.config.width/2,game.config.height*9/10, "Press Space to start!", menuConfig).setOrigin(0.5,0.5);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }

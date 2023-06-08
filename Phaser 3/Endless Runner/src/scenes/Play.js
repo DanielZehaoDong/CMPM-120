@@ -14,6 +14,7 @@ class Play extends Phaser.Scene {
     }
     create() {
         this.bgmPlay = this.sound.add("bgmPlay", { loop: true });
+        this.gameOver = this.sound.add("gameOver", { loop: true });
         this.bgmPlay.play();
         this.backgroundTracker=0;
         let menuConfig = {
@@ -25,7 +26,7 @@ class Play extends Phaser.Scene {
         }
         keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        this.background = this.add.tileSprite(0, 0, 700, 700, 'background').setOrigin(0, 0);
+        this.background = this.add.tileSprite(0, 0, 1000, 800, 'background').setOrigin(0, 0);
         this.character = this.physics.add.sprite(game.config.width/2,game.config.height-50, 'character').setOrigin(0.5);
         this.character.setCollideWorldBounds(true);
         this.character.destroyed = false;
@@ -88,6 +89,7 @@ class Play extends Phaser.Scene {
                 bottom: 5,
             }
         };
+        this.scoreTracker = this.add.text(game.config.width/2, this.totalScore, scoreConfig).setOrigin(0.5);
     }
     
     update() { 
@@ -127,12 +129,12 @@ class Play extends Phaser.Scene {
     }
     gotHit(){
         
-        this.add.text(game.config.width/2, game.config.height/2, 'You Died', this.gameOverConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2+64, 'Survival Time:    seconds', this.gameOverConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', this.gameOverConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2+64, 'You survived for:    seconds and earned    points!', this.gameOverConfig).setOrigin(0.5);
         this.add.text(game.config.width/2-55, game.config.height/2+64, this.totalTime, this.gameOverConfig).setOrigin(0.5);
         this.add.text(game.config.width/2+155, game.config.height/2+64, this.totalScore, this.gameOverConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 64+25, 'Press (R) to Restart or (Space) back to Menu', this.gameOverConfig).setOrigin(0.5);
-        this.character.destroyed = true;
+        this.add.text(game.config.width/2, game.config.height/2 + 64+25, 'Press (R) to Restart or (T) for Menu', this.gameOverConfig).setOrigin(0.5);
+        this.ninja.destroyed = true;
         this.sound.play('gameOver');
     }
     changeTime (){
