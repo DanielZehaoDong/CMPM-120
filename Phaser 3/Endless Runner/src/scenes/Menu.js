@@ -5,6 +5,7 @@ class Menu extends Phaser.Scene {
 
     preload() {
         this.load.image('background', './assets/img/background.png');
+        this.load.image('tiger', './assets/img/tiger.png');
         this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');
     }
     create() {
@@ -26,7 +27,7 @@ class Menu extends Phaser.Scene {
        
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
-        this.add.sprite(game.config.width/2,game.config.height-25,"character");
+        this.add.sprite(game.config.width/2,game.config.height-25,"tiger");
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {

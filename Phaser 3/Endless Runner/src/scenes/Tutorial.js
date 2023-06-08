@@ -4,7 +4,9 @@ class Tutorial extends Phaser.Scene {
     }
     preload() {
         this.load.image('background', './assets/img/background.png');
+        this.load.image('tiger', './assets/img/tiger.png');
         this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');
+        
     }
     create() {
         let menuConfig = {
