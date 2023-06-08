@@ -26,7 +26,7 @@ class Play extends Phaser.Scene {
         }
         keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        this.background = this.add.tileSprite(0, 0, 1000, 800, 'background').setOrigin(0, 0);
+        this.background = this.add.tileSprite(0, 0, 1000, 1000, 'background').setOrigin(0, 0);
         this.tiger = this.physics.add.sprite(game.config.width/2,game.config.height-50, 'tiger').setOrigin(0.5);
         this.tiger.setCollideWorldBounds(true);
         this.tiger.destroyed = false;
@@ -57,11 +57,11 @@ class Play extends Phaser.Scene {
         }
         */
 
-        this.missile1 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'missile', 0, 5, false).setOrigin(0, 0);
-        this.missile2 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'missile', 0, 5, false).setOrigin(0, 0);
-        this.missile3 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'missile', 0, 5, false).setOrigin(0, 0);
-        this.missile4 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'missile', 0, 5, false).setOrigin(0, 0);
-        this.missile5 = new Obstruction(this, Math.floor(Math.random() * 400), 0, 'missile', 0, 5, false).setOrigin(0, 0);
+        this.missile1 = new Obstruction(this, Math.floor(Math.random() * 1000), 0, 'missile', 0, 5, false).setOrigin(0, 0);
+        this.missile2 = new Obstruction(this, Math.floor(Math.random() * 1000), 0, 'missile', 0, 5, false).setOrigin(0, 0);
+        this.missile3 = new Obstruction(this, Math.floor(Math.random() * 1000), 0, 'missile', 0, 5, false).setOrigin(0, 0);
+        this.missile4 = new Obstruction(this, Math.floor(Math.random() * 1000), 0, 'missile', 0, 5, false).setOrigin(0, 0);
+        this.missile5 = new Obstruction(this, Math.floor(Math.random() * 1000), 0, 'missile', 0, 5, false).setOrigin(0, 0);
         let gameOverConfig = {
             fontFamily: 'Cursive',
             fontSize: '24px',
@@ -133,7 +133,7 @@ class Play extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2+64, 'You survived for:    seconds and earned    points!', this.gameOverConfig).setOrigin(0.5);
         this.add.text(game.config.width/2-55, game.config.height/2+64, this.totalTime, this.gameOverConfig).setOrigin(0.5);
         this.add.text(game.config.width/2+155, game.config.height/2+64, this.totalScore, this.gameOverConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 64+25, 'Press (R) to Restart or (T) for Menu', this.gameOverConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 64+25, 'Press (R) to Restart or (SPACE) for Menu', this.gameOverConfig).setOrigin(0.5);
         this.tiger.destroyed = true;
         this.sound.play('gameOver');
     }
