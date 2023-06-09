@@ -4,6 +4,7 @@ class Tutorial extends Phaser.Scene {
     }
     preload() {
         this.load.image('ackBackground', './assets/ackbackground.png');
+        this.load.image('portal', './assets/portal.png');
         this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');        
     }
     create() {
@@ -24,6 +25,7 @@ class Tutorial extends Phaser.Scene {
         this.add.text(game.config.width/2,game.config.height*9/10, "Press Space to start or Enter back to menu!", menuConfig).setOrigin(0.5,0.5);
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.add.sprite(game.config.width/2,game.config.height-50,"portal");
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {

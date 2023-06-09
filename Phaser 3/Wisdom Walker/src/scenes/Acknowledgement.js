@@ -4,6 +4,7 @@ class Acknowledgement extends Phaser.Scene {
     }
     preload() {
         this.load.image('ackBackground', './assets/ackbackground.png');
+        this.load.image('book','./assets/book.png')
         this.load.audio('bgmAck', './assets/bgmAck.wav')
     }
     create() {
@@ -32,6 +33,7 @@ class Acknowledgement extends Phaser.Scene {
         this.add.text(game.config.width/2,game.config.height/4+50+50+50+50+50, "Thank you for supporting Wisdom Walker", menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height*9/10, "Press Enter to go back to menu", menuConfig).setOrigin(0.5,0.5);
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+        this.add.sprite(game.config.width/2,game.config.height-50,"book");
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {

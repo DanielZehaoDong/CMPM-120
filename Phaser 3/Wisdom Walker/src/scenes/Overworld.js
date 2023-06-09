@@ -7,9 +7,9 @@ class Overworld extends Phaser.Scenes {
 
     preload() {
         this.load.path = './assets/'
-        this.load.spritesheet('slime', 'slime.png', {
-            framewidth: 16,
-            frameheight: 16
+        this.load.spritesheet('bob', 'bob.png', {
+            framewidth: 32,
+            frameheight: 48
         })
         this.load.image('tilesetImage', 'gameTileset.png')
         this.load.tilemapTiledJSON('gamemapJSON', 'gameMap.json')
