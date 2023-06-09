@@ -35,7 +35,7 @@ class Play extends Phaser.Scene {
         //set up mouse control
         this.input.on('pointerdown', function (pointer){
             if (pointer.leftButtonDown()){
-                this.p1Rocket.shootOnClick()
+                this.p1Rocket.mouseShoot()
             }
         }, this);
         // animation config
