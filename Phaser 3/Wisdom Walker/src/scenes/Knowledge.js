@@ -1,6 +1,6 @@
-class Play extends Phaser.Scene {
+class Knowledge extends Phaser.Scene {
     constructor() {
-        super("playScene");
+        super("knowledgeScene");
     }
     preload() {
         this.load.image('bob', './assets/bob.png');
