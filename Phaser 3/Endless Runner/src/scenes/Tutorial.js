@@ -17,7 +17,7 @@ class Tutorial extends Phaser.Scene {
         fixedWidth: 0
         }
         this.add.text(game.config.width/2+100,game.config.height/5+60, 'Try to avoid the obstructions', menuConfig).setOrigin(0.5,0.5);
-        this.add.text(game.config.width/2+100,game.config.height/5+60+100, 'Use ← and → to move', menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2+100,game.config.height/5+60+100, 'Use <- and -> to move', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2+100,game.config.height/5+60+100+100, 'Keep alive!', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2+100,game.config.height/5+60+100+100+50, 'Good luck bro!', menuConfig).setOrigin(0.5,0.5);
         menuConfig.fontSize=30;
