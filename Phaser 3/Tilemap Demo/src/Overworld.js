@@ -1,4 +1,4 @@
-class Overworld extends Phaser.Scenes {
+class Overworld extends Phaser.Scene {
     constructor() {
         super({key: 'overworldScene'})
 
