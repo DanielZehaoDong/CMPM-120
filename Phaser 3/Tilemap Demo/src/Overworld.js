@@ -71,7 +71,6 @@ class Overworld extends Phaser.Scene {
         }
         this.direction.normalize()
         this.slime.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y)
-
-
+        
     }
 }
