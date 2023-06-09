@@ -19,38 +19,32 @@ class Overworld extends Phaser.Scenes {
         const map = this.add.tilemap('gamemapJSON')
         const tileset = map.addTilesetimage('tileset', 'tilesetImage')
 
-        //add layer
         const bgLayer = map.createLayer('Background', tileset, 0, 0)
         const terrainLayer = map.createLayer('Terrain', tileset, 0, 0)
         const treeLayer = map.createLayer('Trees', tileset, 0, 0).setDepth(10)
 
-        //add player
-        this.slime = this.physics.add.sprite(32, 32, 'slime', 0)
+        this.bob = this.physics.add.sprite(32, 48, 'bob', 0)
         this.anims.create({
-            key: 'jiggle',
+            key: 'walk',
             frameRate: 8,
             repeat: -1,
-            frames: this.anims.generateFrameNumbers('slime', {
+            frames: this.anims.generateFrameNumbers('bob', {
                 start: 0,
                 end: 1
             })
         })
-        this.slime.play('jiggle')
-        this.slime.body.setCollideWorldBounds(true)
+        this.bob.play('walk')
+        this.bob.body.setCollideWorldBounds(true)
 
-        //enable collision
         terrainLayer.setCollisionByProperty({ collides: true })
         treeLayer.setCollisionByProperty({ collides: true })
-        this.physics.add.collider(this.slime, terrainLayer)
-        this.physics.add.collider(this.slime, treeLayer)
+        this.physics.add.collider(this.bob, terrainLayer)
+        this.physics.add.collider(this.bob, treeLayer)
 
-        //cameras
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels)
-        this.cameras.main.startFollow(this.slime, true, 0.25, 0.25)
+        this.cameras.main.startFollow(this.bob, true, 0.25, 0.25)
         this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels)
 
-
-        //input
         this.cursors = this.input.keyboard.createCursorKeys()
 
     }
@@ -63,14 +57,14 @@ class Overworld extends Phaser.Scenes {
         else if(this.cursors.right.isDown){
             this.direction.x = 1
         }
-        if(this.cursors.up.isDown){
+        else if(this.cursors.up.isDown){
             this.direction.y = -1
         }
         else if(this.cursors.down.isDown){
             this.direction.y = 1
         }
         this.direction.normalize()
-        this.slime.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y)
+        this.bob.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y)
 
 
     }
