@@ -4,7 +4,6 @@ class Menu extends Phaser.Scene {
     }
     preload() {
         this.load.image('gameMenu', './assets/gameMenu.png');
-        this.load.image('bob', './assets/bob.png');
         this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');
     }
     create() {
@@ -36,12 +35,14 @@ class Menu extends Phaser.Scene {
                 }
                 textureManager.addImage('titlesnapshot', snapshotImage);
             });
+            this.bgmMenu.stop();
             this.scene.start('playScene'); 
         }
         if (Phaser.Input.Keyboard.JustDown(keyT)) {
             this.scene.start('tutorialScene'); 
         }
         if (Phaser.Input.Keyboard.JustDown(keyA)) {
+            this.bgmMenu.stop();
             this.scene.start('acknowledgeScene'); 
         }
     }

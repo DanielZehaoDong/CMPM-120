@@ -3,7 +3,8 @@ class Tutorial extends Phaser.Scene {
         super("tutorialScene");
     }
     preload() {
-        this.load.image('ackBackground', './assets/ackbackground.png');        
+        this.load.image('ackBackground', './assets/ackbackground.png');
+        this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');        
     }
     create() {
         let menuConfig = {
@@ -13,6 +14,8 @@ class Tutorial extends Phaser.Scene {
             align: 'left',
         fixedWidth: 0
         }
+        this.bgmMenu = this.sound.add("bgmMenu", { loop: true });
+        this.bgmMenu.play();
         this.add.text(game.config.width/2+100,game.config.height/5+60, 'Find the red book and send it to the portal', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2+100,game.config.height/5+60+100, 'Use ← → ↑ ↓ to move', menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2+100,game.config.height/5+60+100+100, 'You will earn points after transport the book', menuConfig).setOrigin(0.5,0.5);

@@ -4,6 +4,7 @@ class Acknowledgement extends Phaser.Scene {
     }
     preload() {
         this.load.image('ackBackground', './assets/ackbackground.png');
+        this.load.audio('bgmAck', './assets/bgmAck.wav')
     }
     create() {
     let menuConfig = {
@@ -19,6 +20,8 @@ class Acknowledgement extends Phaser.Scene {
         fixedWidth: 0
       }
         this.add.sprite(0,0,"ackBackground").setOrigin(0,0);
+        this.bgmAck = this.sound.add("bgmAck", { loop: true });
+        this.bgmAck.play();
         this.add.text(game.config.width/2,game.config.height/4, "Tileset are not created by us, the credit goes to all the assets from the LPC contest.", menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height/4+50, "Image of Bob, Book, and Gate created by Noctis Wang", menuConfig).setOrigin(0.5,0.5);
         menuConfig.fontSize='28px';
@@ -32,6 +35,7 @@ class Acknowledgement extends Phaser.Scene {
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
+            this.bgmAck.stop();
             this.scene.start('menuScene');    
         }
     }
