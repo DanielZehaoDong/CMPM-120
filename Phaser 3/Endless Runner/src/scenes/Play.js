@@ -14,7 +14,7 @@ class Play extends Phaser.Scene {
     }
     create() {
         this.bgmPlay = this.sound.add("bgmPlay", { loop: true });
-        this.gameOver = this.sound.add("gameOver", { loop: true });
+        this.gameOver = this.sound.add("gameOver", { loop: false });
         this.bgmPlay.play();
         this.backgroundTracker=0;
         let menuConfig = {
@@ -121,7 +121,7 @@ class Play extends Phaser.Scene {
         }
         if(this.tiger.destroyed){
             this.tigerDeath(this.tiger); 
-            this.sound.play('deathAudio')
+            this.sound.play('deathAudio', { loop: false });
         }
     
         if (this.tiger.destroyed && Phaser.Input.Keyboard.JustDown(keyR)) {
