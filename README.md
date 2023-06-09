@@ -1,2 +1,3 @@
 # CMPM-120
-# Rocket Patrol, Rocket Patrol Mod, Endless Runner, Tilemap
+# Zehao Dong
+# Created Rocket Patrol, Rocket Patrol Mod, Endless Runner, Tilemap, Wisdom Walker
