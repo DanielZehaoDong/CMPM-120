@@ -30,8 +30,15 @@ class Tutorial extends Phaser.Scene {
             this.scene.start('menuScene');    
         }
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+            let textureManager = this.textures;
+            this.game.renderer.snapshot((snapshotImage) => {
+                if(textureManager.exists('titlesnapshot')) {
+                    textureManager.remove('titlesnapshot');
+                }
+                textureManager.addImage('titlesnapshot', snapshotImage);
+            });
             this.bgmMenu.stop();
-            this.scene.start('playScene');    
+            this.scene.start('playScene'); 
         }
     }
 }
