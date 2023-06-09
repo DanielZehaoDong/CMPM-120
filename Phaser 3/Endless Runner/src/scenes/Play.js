@@ -77,7 +77,7 @@ class Play extends Phaser.Scene {
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.totalTime=0;
-        this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.updateTime, callbackScope: this, loop: true });
+        this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.changeTime, callbackScope: this, loop: true });
         
         let scoreConfig = {
             fontFamily: 'Cursive',
