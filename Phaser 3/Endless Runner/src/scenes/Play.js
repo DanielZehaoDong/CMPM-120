@@ -31,6 +31,12 @@ class Play extends Phaser.Scene {
         this.tiger.setCollideWorldBounds(true);
         this.tiger.destroyed = false;
         this.totalScore=0;
+        
+        this.anims.create({
+            key: 'death',
+            frames: this.anims.generateFrameNumbers('death', { start: 0, end: 9, first: 0}),
+            frameRate: 30
+        });
 
         /*if (this.textures.exists('titlesnapshot')) {
             let titleSnapLeft = this.add.image(centerX, centerY, 'titlesnapshot').setOrigin(0.5);
@@ -114,9 +120,10 @@ class Play extends Phaser.Scene {
             this.physics.world.collide(this.tiger, this.missile5, this.gotHit, null, this);
         }
         if(this.tiger.destroyed){
+            this.tigerDeath(this.tiger); 
             this.sound.play('deathAudio')
-            this.tiger.setTexture('death')
         }
+    
         if (this.tiger.destroyed && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.bgmPlay.stop();
             this.scene.restart();
@@ -127,7 +134,17 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
     }
-    gotHit(){
+
+    tigerDeath() {
+        tiger.alpha = 0;
+            let boom = this.add.sprite(tiger.x, tiger.y, 'death').setOrigin(0, 0);
+            boom.anims.play('death');
+            boom.on('animationcomplete', () => {
+            boom.destroy();
+            });
+    }
+
+    gotHit() {
         
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', this.gameOverConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2+64, 'You survived for:    seconds and earned    points!', this.gameOverConfig).setOrigin(0.5);
@@ -137,7 +154,7 @@ class Play extends Phaser.Scene {
         this.tiger.destroyed = true;
         this.sound.play('gameOver');
     }
-    changeTime (){
+    changeTime() {
         if((this.totalTime%5==0)&&(!this.tiger.destroyed)&&(this.totalTime!=0)){
             this.missile1.setSpeed(this.missile1.moveSpeed+1);
             this.missile2.setSpeed(this.missile2.moveSpeed+1);
@@ -152,7 +169,7 @@ class Play extends Phaser.Scene {
         }
     }
 
-    gameFinish(){
+    gameFinish() {
         this.textures.remove('titlesnapshot');
     }
 }
