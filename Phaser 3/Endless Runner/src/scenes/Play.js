@@ -136,7 +136,7 @@ class Play extends Phaser.Scene {
     }
 
     tigerDeath() {
-        tiger.alpha = 0;
+        this.tiger.alpha = 0;
             let boom = this.add.sprite(tiger.x, tiger.y, 'death').setOrigin(0, 0);
             boom.anims.play('death');
             boom.on('animationcomplete', () => {
