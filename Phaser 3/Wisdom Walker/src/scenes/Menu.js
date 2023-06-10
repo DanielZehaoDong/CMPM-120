@@ -37,7 +37,7 @@ class Menu extends Phaser.Scene {
                 textureManager.addImage('titlesnapshot', snapshotImage);
             });
             this.bgmMenu.stop();
-            this.scene.start('knowledgeScene'); 
+            this.scene.start('overworldScene'); 
         }
         if (Phaser.Input.Keyboard.JustDown(keyT)) {
             this.scene.start('tutorialScene'); 

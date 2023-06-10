@@ -33,7 +33,7 @@ class Tutorial extends Phaser.Scene {
         }
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
             this.bgmMenu.stop();
-            this.scene.start('playScene');    
+            this.scene.start('overworldScene');    
         }
     }
 }
