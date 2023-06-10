@@ -1,71 +1,71 @@
-class Overworld extends Phaser.Scenes {
-    constructor() {
+class Overworld extends Phaser.Scene {
+    constructor(){
         super({key: 'overworldScene'})
-
         this.VEL = 100;
     }
-
-    preload() {
+    preload(){
         this.load.path = './assets/';
         this.load.spritesheet('bob', 'bob.png', {
-            framewidth: 32,
-            frameheight: 48
+            frameWidth: 32,
+            frameHeight: 48
         });
         this.load.image('tilesetImage', 'gameTileset.png');
-        this.load.tilemapTiledJSON('gamemapJSON', 'gameMap.json');
+        this.load.tilemapTiledJSON('gameMapJSON', 'gameMap.json');
     }
 
-    create() {
-        const map = this.add.tilemap('gamemapJSON');
-        const tileset = map.addTilesetimage('tileset', 'tilesetImage');
+    create(){
+        const map = this.add.tilemap('gameMapJSON');
+        const tileset = map.addTilesetImage('tileset', 'tilesetImage');
 
-        const bgLayer = map.createLayer('Background', tileset, 0, 0);
-        const terrainLayer = map.createLayer('Terrain', tileset, 0, 0);
-        const treeLayer = map.createLayer('Trees', tileset, 0, 0).setDepth(10);
+        // add layer
+        const bgLayer = map.createLayer('Background', tileset, 0,0);
+        const terrainLayer = map.createLayer('Terrain', tileset, 0,0);
+        const treeLayer = map.createLayer('Trees', tileset, 0,0).setDepth(10);
 
-        this.bob = this.physics.add.sprite(32, 48, 'bob', 0);
-        this.anims.create({
-            key: 'walk',
-            frameRate: 8,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('bob', {
-                start: 0,
-                end: 1
-            })
-        });
-        this.bob.play('walk');
-        this.bob.body.setCollideWorldBounds(true);
+         // add player
+         this.bob = this.physics.add.sprite(32, 32, 'bob', 0);
+         this.anims.create({
+             key: 'walk',
+             frameRate: 8,
+             repeat: -1,
+             frames: this.anims.generateFrameNumbers('bob', {
+                 start: 0,
+                 end: 1
+             })
+         });
+         this.bob.play('walk');
+         this.bob.body.setCollideWorldBounds(true);
 
-        terrainLayer.setCollisionByProperty({ collides: true });
-        treeLayer.setCollisionByProperty({ collides: true });
+         // enable collision
+        terrainLayer.setCollisionByProperty({collides: true});
+        treeLayer.setCollisionByProperty({collides: true});
+        
         this.physics.add.collider(this.bob, terrainLayer);
         this.physics.add.collider(this.bob, treeLayer);
 
-        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.bob, true, 0.25, 0.25);
-        this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
+         // cameras
+         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+         this.cameras.main.startFollow(this.slime, true, 0.25, 0.25);
+         this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
 
+         // input
         this.cursors = this.input.keyboard.createCursorKeys();
-
+ 
     }
 
-    update() {
+    update(){
         this.direction = new Phaser.Math.Vector2(0);
         if(this.cursors.left.isDown){
             this.direction.x = -1;
-        }
-        else if(this.cursors.right.isDown){
+        }else if(this.cursors.right.isDown){
             this.direction.x = 1;
         }
-        else if(this.cursors.up.isDown){
+        if(this.cursors.up.isDown){
             this.direction.y = -1;
-        }
-        else if(this.cursors.down.isDown){
+        }else if(this.cursors.down.isDown){
             this.direction.y = 1;
         }
         this.direction.normalize();
-        this.bob.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
-
-
+        this.bob.setVelocity(this.VEL * this.direction.x , this.VEL * this.direction.y);
     }
 }
