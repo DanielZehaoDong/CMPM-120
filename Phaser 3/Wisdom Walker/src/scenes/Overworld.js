@@ -91,5 +91,11 @@ class Overworld extends Phaser.Scene {
         }
         this.direction.normalize();
         this.bob.setVelocity(this.VEL * this.direction.x , this.VEL * this.direction.y);
+
+        this.physics.world.collide(this.bob, this.book, this.bookCollect, null, this);
+    }
+
+    bookCollect(){
+        this.book.destroyed = true;
     }
 }
