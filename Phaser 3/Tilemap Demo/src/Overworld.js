@@ -34,7 +34,7 @@ class Overworld extends Phaser.Scene {
                 start: 0,
                 end: 1
             })
-        })
+        });
         this.slime.play('jiggle');
         this.slime.body.setCollideWorldBounds(true);
 
