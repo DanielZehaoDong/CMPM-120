@@ -11,6 +11,11 @@ class Overworld extends Phaser.Scene {
         });
         this.load.image('tilesetImage', 'gameTileset.png');
         this.load.tilemapTiledJSON('gameMapJSON', 'gameMap.json');
+        this.load.spritesheet('portal','portal.png', {
+            frameWidth: 48,
+            frameHeight: 48,
+        });
+        this.load.image('book', 'book.png');
     }
 
     create(){
@@ -22,7 +27,7 @@ class Overworld extends Phaser.Scene {
         const terrainLayer = map.createLayer('Terrain', tileset, 0,0);
         const treeLayer = map.createLayer('Trees', tileset, 0,0).setDepth(10);
 
-         // add player
+         // add bob
          this.bob = this.physics.add.sprite(32, 32, 'bob', 0);
          this.anims.create({
              key: 'walk',
@@ -35,6 +40,25 @@ class Overworld extends Phaser.Scene {
          });
          this.bob.play('walk');
          this.bob.body.setCollideWorldBounds(true);
+
+         // add portal
+         this.portal = this.physics.add.sprite(48, 48, 'portal', 0);
+         this.anims.create({
+             key: 'rotate',
+             frameRate: 4,
+             repeat: -1,
+             frames: this.anims.generateFrameNumbers('portal', {
+                 start: 0,
+                 end: 1
+             })
+         });
+         this.portal.play('rotate');
+
+         // add book
+         this.book = this.physics.add.sprite(48, 48, 'book', 0);
+         this.book.destroyed = false;
+
+         
 
          // enable collision
         terrainLayer.setCollisionByProperty({collides: true});

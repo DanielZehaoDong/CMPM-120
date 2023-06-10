@@ -68,7 +68,7 @@ class Play extends Phaser.Scene {
         this.barrelTwoAvailable=true;
         let gameOverConfig = {
             fontFamily: 'Courier',
-            fontSize: '28px',
+            fontSize: '60px',
             backgroundColor: '#F3B141',
             color: '#843605',
             align: 'right',
