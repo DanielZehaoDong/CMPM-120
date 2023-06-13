@@ -16,6 +16,7 @@ class Overworld extends Phaser.Scene {
             frameHeight: 48,
         });
         this.load.image('book', 'book.png');
+        this.load.audio('bgmPlay', 'bgmPlay.wav')
     }
 
     create(){
@@ -57,6 +58,10 @@ class Overworld extends Phaser.Scene {
          // add book
          this.book = this.physics.add.sprite(48, 48, 'book', 0);
          this.book.destroyed = false;
+
+         //add background music
+         this.bgmPlay = this.sound.add("bgmPlay", { loop: true });
+         this.bgmPlay.play();
 
          
 
