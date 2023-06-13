@@ -1,4 +1,4 @@
-class Menu extends Phaser.Scene {
+/*class Menu extends Phaser.Scene {
     constructor() {
         super("menuScene");
     }
@@ -48,3 +48,4 @@ class Menu extends Phaser.Scene {
         }
     }
 }
+*/
