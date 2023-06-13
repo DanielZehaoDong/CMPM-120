@@ -10,7 +10,7 @@ class Acknowledgement extends Phaser.Scene {
     create() {
     let menuConfig = {
         fontFamily: 'Cursive',
-        fontSize: '36px',
+        fontSize: '24px',
         backgroundColor: '#00FFFF',
         color: '#000080',
         align: 'right',
@@ -23,7 +23,6 @@ class Acknowledgement extends Phaser.Scene {
         this.add.sprite(0,0,"ackBackground").setOrigin(0,0);
         this.bgmAck = this.sound.add("bgmAck", { loop: true });
         this.bgmAck.play();
-        menuConfig.fontSize='24px';
         this.add.text(game.config.width/2,game.config.height/10, "Tileset are not created by us, the credit goes to all the assets from the LPC contest.", menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height/10+50, "Image of Bob, Book, and Gate created by Noctis Wang", menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height/10+50+50, "Tileset Map and background image created by Zehao Dong", menuConfig).setOrigin(0.5,0.5);
