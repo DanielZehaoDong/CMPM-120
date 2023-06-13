@@ -26,7 +26,7 @@ class Overworld extends Phaser.Scene {
         // add layer
         const bgLayer = map.createLayer('Background', tileset, 0,0);
         const terrainLayer = map.createLayer('Terrain', tileset, 0,0);
-        const treeLayer = map.createLayer('Trees', tileset, 0,0).setDepth(10);
+        const treeLayer = map.createLayer('Tree', tileset, 0,0).setDepth(10);
 
          // add bob
          this.bob = this.physics.add.sprite(32, 32, 'bob', 0);
