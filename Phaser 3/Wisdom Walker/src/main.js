@@ -5,14 +5,14 @@ let config = {
     },
     width: 800,
     height: 800,
+    scene: [Menu, Acknowledgement, Overworld, Tutorial],
+    zoom: 2,
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+            //debug: true
         }
-    },
-    zoom: 2,
-    scene: [Acknowledgement, Overworld, Tutorial]
+    }
 };
 
 const game = new Phaser.Game(config);
