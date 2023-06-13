@@ -12,8 +12,8 @@ let config = {
         }
     },
     zoom: 2,
-    scene: [ Menu, Acknowledgement, Overworld, Tutorial ]
-}
+    scene: [Menu, Acknowledgement, Overworld, Tutorial]
+};
 
 const game = new Phaser.Game(config);
 let centerX = game.config.width/2;
