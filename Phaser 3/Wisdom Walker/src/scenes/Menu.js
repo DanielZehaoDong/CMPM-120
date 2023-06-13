@@ -18,9 +18,9 @@ class Menu extends Phaser.Scene {
         this.add.sprite(0,0,"gameMenu").setOrigin(0,0);
         this.bgmMenu = this.sound.add("bgmMenu", { loop: true });
         this.bgmMenu.play();
-        this.add.text(game.config.width/2,game.config.height/5+15+25+35, 'Press (A) for Acknowledgement', menuConfig).setOrigin(0.5,0.5);
-        this.add.text(game.config.width/2,game.config.height/5+15+25+35+45, 'Press (T) for Tutorial', menuConfig).setOrigin(0.5,0.5);
-        this.add.text(game.config.width/2,game.config.height/5+15+25+35+45+55, 'Press (Space) to Play', menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2,game.config.height/5+15+25+30, 'Press (A) for Acknowledgement', menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2,game.config.height/5+15+25+30+30, 'Press (T) for Tutorial', menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2,game.config.height/5+15+25+30+30+30, 'Press (Space) to Play', menuConfig).setOrigin(0.5,0.5);
        
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
