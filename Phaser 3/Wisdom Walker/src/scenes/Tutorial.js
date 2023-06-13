@@ -5,7 +5,7 @@ class Tutorial extends Phaser.Scene {
     preload() {
         this.load.image('ackBackground', './assets/ackbackground.png');
         this.load.image('portal', './assets/portal.png');
-        this.load.audio('bgmMenu', './assets/audio/bgmMenu.wav');        
+        this.load.audio('bgmMenu', './assets/bgmMenu.wav');        
     }
     create() {
         let menuConfig = {
