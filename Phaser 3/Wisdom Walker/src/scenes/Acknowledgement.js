@@ -29,8 +29,8 @@ class Acknowledgement extends Phaser.Scene {
         this.add.text(game.config.width/2,game.config.height/10+50+50+50+50, "Audio and sound effect created by 'https://sfx.productioncrate.com'/", menuConfig).setOrigin(0.5,0.5);
         this.add.text(game.config.width/2,game.config.height/10+50+50+50+50+50, "Programmed by Zehao Dong", menuConfig).setOrigin(0.5,0.5);
         menuConfig.fontSize='32px';
-        this.add.text(game.config.width/2,game.config.height/10+50+50+50+50+50, "Thank you for supporting Wisdom Walker", menuConfig).setOrigin(0.5,0.5);
-        this.add.text(game.config.width/2,game.config.height/10+50+50+50+50+50+50, "Press Enter to go back to menu", menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2,game.config.height/10+50+50+50+50+50+50, "Thank you for supporting Wisdom Walker", menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2,game.config.height/10+50+50+50+50+50+50+50, "Press Enter to go back to menu", menuConfig).setOrigin(0.5,0.5);
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.add.sprite(game.config.width/2,game.config.height-50,"book");
     }
