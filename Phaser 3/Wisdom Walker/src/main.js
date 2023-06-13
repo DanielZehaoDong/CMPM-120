@@ -5,17 +5,17 @@ let config = {
     },
     width: 800,
     height: 800,
-    scene: [Menu, Acknowledgement, Overworld, Tutorial],
-    zoom: 2,
     physics: {
         default: 'arcade',
         arcade: {
-            //debug: true
+            debug: true
         }
-    }
+    },
+    zoom: 2,
+    scene: [Overworld, Menu, Tutorial, Acknowledgement]
 };
 
-const game = new Phaser.Game(config);
+const game =new Phaser.Game(config);
 let centerX = game.config.width/2;
 let centerY = game.config.height/2;
 // reserve keyboard vars
