@@ -44,7 +44,7 @@ class Menu extends Phaser.Scene {
         }
         if (Phaser.Input.Keyboard.JustDown(keyA)) {
             this.bgmMenu.stop();
-            this.scene.start('acknowledgeScene'); 
+            this.scene.start('acknowledgementScene'); 
         }
     }
 }
