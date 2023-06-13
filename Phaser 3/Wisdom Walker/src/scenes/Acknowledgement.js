@@ -11,8 +11,7 @@ class Acknowledgement extends Phaser.Scene {
     let menuConfig = {
         fontFamily: 'Cursive',
         fontSize: '24px',
-        backgroundColor: '#00FFFF',
-        color: '#000080',
+        color: '#00FFFF',
         align: 'right',
         padding: {
             top: 5,
