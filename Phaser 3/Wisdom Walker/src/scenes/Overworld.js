@@ -98,11 +98,11 @@ class Overworld extends Phaser.Scene {
         this.bob.setVelocity(this.VEL * this.direction.x , this.VEL * this.direction.y);
 
         this.physics.world.collide(this.bob, this.book, this.bookCollect, null, this);
-        this.physics.world.collide(this.bob, this.portal, this.portalTrigger, null, this);
     }
 
     bookCollect(){
         this.book.destroyed = true;
+        this.physics.world.collide(this.bob, this.portal, this.portalTrigger, null, this);
     }
     portalTrigger(){
         this.scene.start('colorScene')
