@@ -33,30 +33,24 @@ class Overworld extends Phaser.Scene {
         const treeLayer = map.createLayer('Tree', tileset, 0,0).setDepth(10);
 
          // add bob
-         this.bob = this.physics.add.sprite(32, 272, 'bob', 0);
+         this.bob = this.physics.add.sprite(32, 272, 'bob');
          this.anims.create({
-             key: 'walk',
-             frameRate: 8,
-             repeat: -1,
-             frames: this.anims.generateFrameNumbers('bob', {
-                 start: 0,
-                 end: 1
-             })
-         });
+            key: "walk",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("bob", { start: 0, end: 1 }),
+            repeat: -1
+        });
          this.bob.play('walk');
          this.bob.body.setCollideWorldBounds(true);
 
          // add portal
-         this.portal = this.physics.add.sprite(80, 800, 'portal', 0);
+         this.portal = this.physics.add.sprite(80, 800, 'portal');
          this.anims.create({
-             key: 'rotate',
-             frameRate: 4,
-             repeat: -1,
-             frames: this.anims.generateFrameNumbers('portal', {
-                 start: 0,
-                 end: 1
-             })
-         });
+            key: "rotate",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("portal", { start: 0, end: 1 }),
+            repeat: -1
+        });
          this.portal.play('rotate');
 
          // add book
