@@ -57,7 +57,7 @@ class Overworld extends Phaser.Scene {
 
          // cameras
          this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-         this.cameras.main.startFollow(this.slime, true, 0.25, 0.25);
+         this.cameras.main.startFollow(this.bob, true, 0.25, 0.25);
          this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
 
          // input
