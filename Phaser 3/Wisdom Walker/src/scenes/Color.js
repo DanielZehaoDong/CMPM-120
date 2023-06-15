@@ -12,7 +12,7 @@ class Color extends Phaser.Scene {
             frameWidth: 48,
             frameHeight: 48,
         });
-        this.load.image('book', 'book.png');
+        this.load.image('book2', 'book2.png');
         this.load.audio('bgmPlay', 'bgmPlay.wav')
     }
 
@@ -31,7 +31,7 @@ class Color extends Phaser.Scene {
 
 
          // add portal
-         this.portal = this.physics.add.sprite(80, 752, 'portal');
+         this.portal = this.physics.add.sprite(736, 704, 'portal');
          this.anims.create({
             key: "rotate",
             frameRate: 8,
@@ -41,12 +41,12 @@ class Color extends Phaser.Scene {
          this.portal.play('rotate');
 
           // add bob
-          this.bob = this.physics.add.sprite(32, 272, 'bob');
+          this.bob = this.physics.add.sprite(752, 32, 'bob');
           this.bob.body.setCollideWorldBounds(true);
 
          // add book
-         this.book = this.physics.add.sprite(752, 48, 'book', 0);
-         this.book.destroyed = false;
+         this.book2 = this.physics.add.sprite(608, 336, 'book2', 0);
+         this.book2.destroyed = false;
 
          // enable collision
         terrainLayer.setCollisionByProperty({collides: true});
@@ -80,12 +80,12 @@ class Color extends Phaser.Scene {
         this.direction.normalize();
         this.bob.setVelocity(this.VEL * this.direction.x , this.VEL * this.direction.y);
 
-        this.physics.world.collide(this.bob, this.book, this.bookCollect, null, this);
+        this.physics.world.collide(this.bob, this.book2, this.book2Collect, null, this);
+        this.physics.world.collide(this.bob, this.portal, this.portalTrigger, null, this);
     }
 
-    bookCollect(){
-        this.book.destroyed = true;
-        this.physics.world.collide(this.bob, this.portal, this.portalTrigger, null, this);
+    book2Collect(){
+        this.book2.destroyed = true;
     }
     portalTrigger(){
         this.scene.start('gameoverScene')

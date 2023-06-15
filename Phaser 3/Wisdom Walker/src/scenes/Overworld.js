@@ -12,7 +12,7 @@ class Overworld extends Phaser.Scene {
             frameWidth: 48,
             frameHeight: 48,
         });
-        this.load.image('book', 'book.png');
+        this.load.image('book1', 'book1.png');
         this.load.audio('bgmPlay', 'bgmPlay.wav')
     }
 
@@ -45,8 +45,8 @@ class Overworld extends Phaser.Scene {
           this.bob.body.setCollideWorldBounds(true);
 
          // add book
-         this.book = this.physics.add.sprite(752, 48, 'book', 0);
-         this.book.destroyed = false;
+         this.book1 = this.physics.add.sprite(752, 48, 'book1', 0);
+         this.book1.destroyed = false;
 
          // enable collision
         terrainLayer.setCollisionByProperty({collides: true});
@@ -80,12 +80,12 @@ class Overworld extends Phaser.Scene {
         this.direction.normalize();
         this.bob.setVelocity(this.VEL * this.direction.x , this.VEL * this.direction.y);
 
-        this.physics.world.collide(this.bob, this.book, this.bookCollect, null, this);
+        this.physics.world.collide(this.bob, this.book1, this.book1Collect, null, this);
+        this.physics.world.collide(this.bob, this.portal, this.portalTrigger, null, this);
     }
 
-    bookCollect(){
-        this.book.destroyed = true;
-        this.physics.world.collide(this.bob, this.portal, this.portalTrigger, null, this);
+    book1Collect(){
+        this.book1.destroyed = true;
     }
     portalTrigger(){
         this.scene.start('colorScene')
