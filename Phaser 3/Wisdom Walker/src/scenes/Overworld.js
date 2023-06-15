@@ -23,6 +23,10 @@ class Overworld extends Phaser.Scene {
         const map = this.add.tilemap('gameMapJSON');
         const tileset = map.addTilesetImage('gameTileset', 'tilesetImage');
 
+        //add background music
+        this.bgmPlay = this.sound.add("bgmPlay", { loop: true });
+        this.bgmPlay.play();
+
         // add layer
         const bgLayer = map.createLayer('Background', tileset, 0,0);
         const terrainLayer = map.createLayer('Terrain', tileset, 0,0);
@@ -58,12 +62,6 @@ class Overworld extends Phaser.Scene {
          // add book
          this.book = this.physics.add.sprite(752, 48, 'book', 0);
          this.book.destroyed = false;
-
-         //add background music
-         this.bgmPlay = this.sound.add("bgmPlay", { loop: true });
-         this.bgmPlay.play();
-
-         
 
          // enable collision
         terrainLayer.setCollisionByProperty({collides: true});
