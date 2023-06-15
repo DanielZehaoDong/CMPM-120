@@ -89,5 +89,6 @@ class Overworld extends Phaser.Scene {
     }
     portalTrigger(){
         this.scene.start('colorScene')
+        this.bgmPlay.stop();
     }
 }

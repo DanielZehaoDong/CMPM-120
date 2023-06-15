@@ -18,7 +18,7 @@ class Gameover extends Phaser.Scene {
         this.add.sprite(0,0,"gameOver").setOrigin(0,0);
         this.bgmMenu = this.sound.add("bgmMenu", { loop: true });
         this.bgmMenu.play();
-        this.add.text(game.config.width/2,game.config.height/5+40+50+60+70, 'Press (Enter) for Menu', menuConfig).setOrigin(0.5,0.5);
+        this.add.text(game.config.width/2,game.config.height/5+650, 'Press (Enter) for Menu', menuConfig).setOrigin(0.5,0.5);
        
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.add.sprite(game.config.width/2,game.config.height-50,"bob");

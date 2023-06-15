@@ -88,6 +88,7 @@ class Color extends Phaser.Scene {
         this.book2.destroyed = true;
     }
     portalTrigger(){
-        this.scene.start('gameoverScene')
+        this.scene.start('gameoverScene');
+        this.bgmPlay.stop();
     }
 }
