@@ -20,7 +20,7 @@ class Color extends Phaser.Scene {
 
     create(){
         const map = this.add.tilemap('gameMap2JSON');
-        const tileset = map.addTilesetImage('tileset', 'tilesetImage');
+        const tileset = map.addTilesetImage('gameTileset', 'tilesetImage');
 
         // add layer
         const bgLayer = map.createLayer('Background', tileset, 0,0);

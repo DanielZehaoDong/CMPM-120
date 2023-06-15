@@ -21,7 +21,7 @@ class Overworld extends Phaser.Scene {
 
     create(){
         const map = this.add.tilemap('gameMapJSON');
-        const tileset = map.addTilesetImage('tileset', 'tilesetImage');
+        const tileset = map.addTilesetImage('gameTileset', 'tilesetImage');
 
         // add layer
         const bgLayer = map.createLayer('Background', tileset, 0,0);
