@@ -12,7 +12,7 @@ let config = {
         }
     },
     zoom: 2,
-    scene: [Menu, Tutorial, Acknowledgement, Overworld, Color]
+    scene: [Menu, Tutorial, Acknowledgement, Overworld, Color, Gameover]
 };
 
 const game =new Phaser.Game(config);
