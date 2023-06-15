@@ -5,10 +5,7 @@ class Overworld extends Phaser.Scene {
     }
     preload(){
         this.load.path = './assets/';
-        this.load.spritesheet('bob', 'bob.png', {
-            frameWidth: 32,
-            frameHeight: 48
-        });
+        this.load.image('bob', 'bob.png');
         this.load.image('tilesetImage', 'gameTileset.png');
         this.load.tilemapTiledJSON('gameMapJSON', 'gameMap.json');
         this.load.spritesheet('portal','portal.png', {
@@ -45,13 +42,6 @@ class Overworld extends Phaser.Scene {
 
           // add bob
           this.bob = this.physics.add.sprite(32, 272, 'bob');
-          this.anims.create({
-             key: "walk",
-             frameRate: 5,
-             frames: this.anims.generateFrameNumbers("bob", { start: 0, end: 1 }),
-             repeat: -1
-         });
-          this.bob.play('walk');
           this.bob.body.setCollideWorldBounds(true);
 
          // add book
