@@ -47,7 +47,7 @@ class Overworld extends Phaser.Scene {
           this.bob = this.physics.add.sprite(32, 272, 'bob');
           this.anims.create({
              key: "walk",
-             frameRate: 8,
+             frameRate: 5,
              frames: this.anims.generateFrameNumbers("bob", { start: 0, end: 1 }),
              repeat: -1
          });
