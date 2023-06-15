@@ -20,7 +20,7 @@ class Gameover extends Phaser.Scene {
         this.bgmMenu.play();
         this.add.text(game.config.width/2,game.config.height/5+40+50+60+70, 'Press (Enter) for Menu', menuConfig).setOrigin(0.5,0.5);
        
-        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+        keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.add.sprite(game.config.width/2,game.config.height-50,"bob");
     }
     update() {
