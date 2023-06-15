@@ -34,7 +34,7 @@ class Overworld extends Phaser.Scene {
 
 
          // add portal
-         this.portal = this.physics.add.sprite(80, 800, 'portal');
+         this.portal = this.physics.add.sprite(80, 752, 'portal');
          this.anims.create({
             key: "rotate",
             frameRate: 8,
